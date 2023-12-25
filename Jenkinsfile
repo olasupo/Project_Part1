@@ -16,10 +16,10 @@ pipeline {
             }
         }
 
-        stage('Install or Upgrade Flask and Werkzeug') {
+        stage('Install Dependencies') {
             steps {
                 script {
-                    sh 'pip3 install --upgrade Flask Werkzeug || pip3 install Flask Werkzeug'
+                    sh 'pip3 install -r requirements.txt'  // Replace with the actual path to your requirements file
                 }
             }
         }
