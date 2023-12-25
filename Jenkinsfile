@@ -16,6 +16,14 @@ pipeline {
             }
         }
 
+        stage('Install or Upgrade Flask and Werkzeug') {
+            steps {
+                script {
+                    sh 'pip3 install --upgrade Flask Werkzeug || pip3 install Flask Werkzeug'
+                }
+            }
+        }
+
         stage('Run rest_app.py (backend)') {
             steps {
                 script {
