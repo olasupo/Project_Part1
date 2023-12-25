@@ -27,7 +27,7 @@ pipeline {
         stage('Run rest_app.py (backend)') {
             steps {
                 script {
-                    sh 'python3 rest_app.py'
+                    sh 'python rest_app.py'
                 }
             }
         }
@@ -35,7 +35,7 @@ pipeline {
         stage('Run web_app.py (frontend)') {
             steps {
                 script {
-                    sh 'python3 web_app.py'
+                    sh 'python web_app.py'
                 }
             }
         }
@@ -43,7 +43,7 @@ pipeline {
         stage('Run backend_testing.py') {
             steps {
                 script {
-                    sh 'python3 backend_testing.py'
+                    sh 'python backend_testing.py'
                 }
             }
         }
@@ -51,7 +51,7 @@ pipeline {
         stage('Run frontend_testing.py') {
             steps {
                 script {
-                    sh 'python3 frontend_testing.py'
+                    sh 'python frontend_testing.py'
                 }
             }
         }
@@ -59,7 +59,7 @@ pipeline {
         stage('Run combined_testing.py') {
             steps {
                 script {
-                    sh 'python3 combined_testing.py'
+                    sh 'python combined_testing.py'
                 }
             }
         }
@@ -67,7 +67,7 @@ pipeline {
         stage('Run clean_environment.py') {
             steps {
                 script {
-                    sh 'python3 clean_environment.py'
+                    sh 'python clean_environment.py'
                 }
             }
         }
