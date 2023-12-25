@@ -1,7 +1,13 @@
 from flask import Flask, request, jsonify, render_template
 import requests
+import signal
 
 app = Flask(__name__)
+
+@app.route('/stop_server')
+def stop_server():
+    os.kill(os.getpid(), signal.CTRL_C_EVENT)
+    return 'Server Stopped'
 
 @app.route('/users/get_user_id/<user_id>', methods=['GET', 'POST', 'DELETE', 'PUT'])
 def user_form(user_id):

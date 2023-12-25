@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 from datetime import datetime
 from flask_cors import CORS
 from db_connector import users_table_exists, create_users_table, user_exists, create_user, delete_user, update_user, search_actions
+import signal
 
 app = Flask(__name__)
 CORS(app)
@@ -9,6 +10,11 @@ CORS(app)
 # Check if 'users' table exists, and create it if not
 if not users_table_exists():
     create_users_table()
+
+@app.route('/stop_server')
+def stop_server():
+    os.kill(os.getpid(), signal.CTRL_C_EVENT)
+    return 'Server Stopped'
 
 # Route for handling GET requests
 @app.route('/users/<user_id>', methods=['GET'])
