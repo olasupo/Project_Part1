@@ -27,7 +27,7 @@ pipeline {
         stage('Run rest_app.py (backend)') {
             steps {
                 script {
-                    sh 'nohup python3 rest_app.py &'
+                    sh 'python3 rest_app.py'
                 }
             }
         }
@@ -35,7 +35,7 @@ pipeline {
         stage('Run web_app.py (frontend)') {
             steps {
                 script {
-                    sh 'nohup python3 web_app.py &'
+                    sh 'python3 web_app.py'
                 }
             }
         }
