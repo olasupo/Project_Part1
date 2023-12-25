@@ -65,9 +65,4 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            // Additional cleanup or notification steps can be added here
-        }
-    }
 }
