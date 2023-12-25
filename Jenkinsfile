@@ -16,14 +16,6 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
-            steps {
-                script {
-                    sh 'pip3 install -r requirements.txt'  // Replace with the actual path to your requirements file
-                }
-            }
-        }
-
         stage('Run rest_app.py (backend)') {
             steps {
                 script {
