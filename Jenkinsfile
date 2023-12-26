@@ -1,64 +1,69 @@
 pipeline {
     agent any
 
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '20', artifactNumToKeepStr: '5'))
+    }
+
+    triggers {
+        pollSCM('* * * * *')
+    }
+
     stages {
-        stage('Pull Code') {
+        stage('Checkout') {
             steps {
-                // Checkout code from your GitHub repository
                 git 'https://github.com/olasupo/Project_Part1.git'
             }
         }
 
-        stage('Run Backend') {
+        stage('Run rest_app.py (backend)') {
             steps {
-                // Run rest_app.py
-                sh 'python rest_app.py'
+                script {
+                    sh 'nohup python3 rest_app.py &'
+                }
             }
         }
 
-        stage('Run Frontend') {
+        stage('Run web_app.py (frontend)') {
             steps {
-                // Run web_app.py
-                sh 'python web_app.py'
+                script {
+                    sh 'nohup python3 web_app.py &'
+                }
             }
         }
 
-        stage('Run Backend Testing') {
+        stage('Run backend_testing.py') {
             steps {
-                // Run backend_testing.py
-                sh 'python backend_testing.py'
+                script {
+                    sh 'python3 backend_testing.py'
+                }
             }
         }
 
-        stage('Run Frontend Testing') {
+        stage('Run frontend_testing.py') {
             steps {
-                // Run frontend_testing.py
-                sh 'python frontend_testing.py'
+                script {
+                    sh 'python3 frontend_testing.py'
+                }
             }
         }
 
-        stage('Run Combined Testing') {
+        stage('Run combined_testing.py') {
             steps {
-                // Run combined_testing.py
-                sh 'python combined_testing.py'
+                script {
+                    sh 'python3 combined_testing.py'
+                }
             }
         }
 
-        stage('Clean Environment') {
+        stage('Run clean_environment.py') {
             steps {
-                // Run clean_environment.py
-                sh 'python clean_environment.py'
+                script {
+                    sh 'python3 clean_environment.py'
+                }
             }
         }
     }
 
-    post {
-        success {
-            echo 'Pipeline successfully executed!'
-        }
-        failure {
-            echo 'Pipeline failed!'
-        }
-    }
+
 }
-
