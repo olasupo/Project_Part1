@@ -4,7 +4,8 @@ from selenium import webdriver
 
 
 # Create a new instance of the Chrome driver
-driver = webdriver.Chrome()
+chrome_path="/usr/local/bin"
+driver = webdriver.Chrome(executable_path=chrome_path)
 
 try:
     # Open the web app in the browser
