@@ -16,6 +16,14 @@ pipeline {
             }
         }
 
+       stage('Run db_connector.py (Database Connection)') {
+            steps {
+                script {
+                    sh 'python3 db_connector.py'
+                }
+            }
+        }
+
         stage('Run rest_app.py (backend)') {
             steps {
                 script {
