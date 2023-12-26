@@ -12,6 +12,7 @@ try:
 
     # Wait for the page to load
     driver.implicitly_wait(60)
+    time.sleep(20)
 
 
 
