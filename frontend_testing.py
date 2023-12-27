@@ -5,10 +5,13 @@ from selenium import webdriver
 
 # Create a new instance of the Chrome drivers
 chrome_path="/usr/local/bin/chromedriver"
-driver = webdriver.Chrome(executable_path=chrome_path)
-chrome_options.add_argument('--headless')
-chrome_options.add_argument('--no-sandbox')
-chrome_options.add_argument('--disable-gpu')
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--headless')        # Run in headless mode
+chrome_options.add_argument('--no-sandbox')      # Disable sandboxing (useful in some environments)
+chrome_options.add_argument('--disable-gpu')     # Disable GPU acceleration
+
+# Create a WebDriver instance with the configured options
+driver = webdriver.Chrome(executable_path=chrome_path, options=chrome_options)
 
 try:
     # Open the web app in the browser
