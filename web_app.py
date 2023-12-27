@@ -20,8 +20,10 @@ def user_form(user_id):
     if user_exists:
         # Get user name if user_id exists
         user_name = get_user_name(user_id)
+        print(f"We found the user with id {user_id} and name {user_name}")
         return render_template('user_form.html', user_exists=True, user_id=user_id, user_name=user_name)
     else:
+        print(f"We could not find the user with id {user_id} and name {user_name}")
         # Render form with dropdown menu if user_id does not exist
         return render_template('user_form.html', user_exists=False, user_id=user_id, default_user_id=user_id)
 

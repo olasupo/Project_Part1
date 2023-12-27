@@ -28,6 +28,7 @@ def get_user_data(user_id):
             get_data = search_actions(user_id)
             print(get_data)
             user_data = {'user_id': get_data[0], 'user_name': get_data[1], 'creation_date': get_data[2]}
+            print(f"We found the user with id {user_data['user_id']} and name {user_data['user_name']}. His record was created on {user_data['creation_date']}")
             return jsonify(user_data), 200
         else:
             print("User does not exist")
