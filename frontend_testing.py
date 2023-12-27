@@ -6,6 +6,9 @@ from selenium import webdriver
 # Create a new instance of the Chrome driver
 chrome_path="/usr/local/bin/chromedriver"
 driver = webdriver.Chrome(executable_path=chrome_path)
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-gpu')
 
 try:
     # Open the web app in the browser
