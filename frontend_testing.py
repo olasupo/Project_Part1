@@ -3,7 +3,7 @@ import time
 from selenium import webdriver
 
 
-# Create a new instance of the Chrome driver
+# Create a new instance of the Chrome drivers
 chrome_path="/usr/local/bin/chromedriver"
 driver = webdriver.Chrome(executable_path=chrome_path)
 chrome_options.add_argument('--headless')
