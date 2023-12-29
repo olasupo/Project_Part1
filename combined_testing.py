@@ -7,8 +7,15 @@ from selenium import webdriver
 # Base URL of your Flask app
 base_url = 'http://127.0.0.1:5001/users/'
 
-# Create a new instance of the Chrome driver
-driver = webdriver.Chrome()
+# Create a new instance of the Chrome drivers
+chrome_path="/usr/local/bin/chromedriver"
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--headless')        # Run in headless mode
+chrome_options.add_argument('--no-sandbox')      # Disable sandboxing (useful in some environments)
+chrome_options.add_argument('--disable-gpu')     # Disable GPU acceleration
+
+# Create a WebDriver instance with the configured options
+driver = webdriver.Chrome(executable_path=chrome_path, options=chrome_options)
 
 def test_post_user(user_id):
     try:

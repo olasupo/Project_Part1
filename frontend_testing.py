@@ -19,10 +19,7 @@ try:
 
     # Wait for the page to load
     driver.implicitly_wait(60)
-    time.sleep(20)
-
-
-
+ 
 finally:
     # Close the browser window
     driver.quit()
